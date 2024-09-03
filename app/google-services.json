@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "566044730789",
+    "project_id": "food-for-thought-fft",
+    "storage_bucket": "food-for-thought-fft.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566044730789:android:cd52282895d034dc28f44c",
+        "android_client_info": {
+          "package_name": "com.project.fft"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-v6aOn6f4IWtZoijiJ3n2I_SuOr70zqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
