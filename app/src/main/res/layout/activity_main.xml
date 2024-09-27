@@ -8,6 +8,51 @@
     tools:context=".MainActivity"
     android:background="#faf0ca">
 
+    <Button
+        android:id="@+id/vendor_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="370dp"
+        android:backgroundTint="#0d3b66"
+        android:drawableLeft="@drawable/vendor_button"
+        android:fontFamily="@font/biryani_light"
+        android:text="Vendor Login"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
 
+    <Button
+        android:id="@+id/order_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="475dp"
+        android:layout_marginEnd="25dp"
+        android:backgroundTint="#0d3b66"
+        android:drawableLeft="@drawable/order_button"
+        android:fontFamily="@font/biryani_light"
+        android:text="Order Food"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="00dp"
+        android:layout_marginEnd="00dp"
+        android:layout_marginBottom="535dp"
+        app:srcCompat="@drawable/ic_round" />
 </RelativeLayout>

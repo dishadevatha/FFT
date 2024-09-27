@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class splash_screen : AppCompatActivity() {
 
-    private val SPLASH_SCREEN_TIME: Long = 3000 //3 seconds
+    private val SPLASH_SCREEN_TIME: Long = 2500 //3 seconds
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
