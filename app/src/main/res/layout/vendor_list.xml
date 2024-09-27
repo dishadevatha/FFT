@@ -8,5 +8,12 @@
     tools:context=".MainActivity"
     android:background="#faf0ca">
 
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/vendorRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_vendor" />
 </RelativeLayout>

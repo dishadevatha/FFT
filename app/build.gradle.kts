@@ -11,6 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.project.fft"
         minSdk = 34
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -47,6 +48,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    //noinspection GradleDependency,UseTomlInstead
     implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
+    //noinspection UseTomlInstead
     implementation("com.google.firebase:firebase-analytics")
+    //noinspection UseTomlInstead,GradleDependency
+    implementation("com.google.firebase:firebase-firestore-ktx:24.4.0") // Use the latest version
+    //noinspection UseTomlInstead
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    //noinspection UseTomlInstead
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 }
