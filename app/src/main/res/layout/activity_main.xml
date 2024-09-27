@@ -55,4 +55,27 @@
         android:layout_marginEnd="00dp"
         android:layout_marginBottom="535dp"
         app:srcCompat="@drawable/ic_round" />
+
+    <!-- Floating Icons -->
+    <ImageView
+        android:id="@+id/floatingIcon1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/vendor_button"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
+
+    <ImageView
+        android:id="@+id/floatingIcon2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/order_button"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
 </RelativeLayout>
