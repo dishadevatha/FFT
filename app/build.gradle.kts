@@ -56,6 +56,10 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.4.0") // Use the latest version
     //noinspection UseTomlInstead
     implementation("com.github.bumptech.glide:glide:4.12.0")
+    //noinspection UseTomlInstead,GradleDependency
+    implementation("com.google.android.material:material:1.9.0")
     //noinspection UseTomlInstead
-    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    //noinspection GradleDependency,UseTomlInstead
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
 }

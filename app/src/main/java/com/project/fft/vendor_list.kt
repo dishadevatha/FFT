@@ -1,5 +1,6 @@
 package com.project.fft
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -42,6 +43,11 @@ class vendor_list : AppCompatActivity() {
                 vendorRecyclerView.adapter = VendorAdapter(vendors) { vendor ->
                     // Handle item click
                     Toast.makeText(this, "Clicked on ${vendor.name}", Toast.LENGTH_SHORT).show()
+                    // val intent = Intent(this, MenuActivity::class.java)
+
+                    intent.putExtra("menuCollection", "${vendor.name} Menu")
+                    startActivity(intent)
+                    finish()
                 }
             }
             .addOnFailureListener { exception ->
