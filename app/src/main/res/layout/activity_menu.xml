@@ -40,7 +40,4 @@
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
         app:titleTextColor="@color/black"
         tools:ignore="MissingConstraints" />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

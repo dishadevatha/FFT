@@ -47,3 +47,5 @@ class MenuAdapter(
 
     override fun getItemCount(): Int = menuItems.size
 }
+
+// Test
