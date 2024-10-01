@@ -7,4 +7,79 @@
     android:layout_height="match_parent"
     tools:context=".vendor_login"
     android:background="@color/background">
+
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="358dp"
+        android:background="@drawable/rounded_corners_edittext"
+        android:ems="10"
+        android:inputType="text"
+        android:padding="10dp"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="269dp"
+        android:background="@drawable/rounded_corners_edittext"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:text="Password" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="131dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="543dp"
+        app:srcCompat="@drawable/vendor_button" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="206dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="77dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginBottom="153dp"
+        android:backgroundTint="@color/myBlue"
+        android:fontFamily="@font/biryani_light"
+        android:text="Login"
+        android:textSize="26sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="88dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="441dp"
+        android:fontFamily="@font/biryani_light"
+        android:text="Vendor Login"
+        android:textColor="@color/myBlue"
+        android:textSize="26sp"
+        android:textStyle="bold" />
 </RelativeLayout>
