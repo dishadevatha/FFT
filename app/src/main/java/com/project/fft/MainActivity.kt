@@ -150,7 +150,7 @@ class MainActivity : AppCompatActivity() {
 
         val flingAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
             duration = 16L // 16ms for smooth 60fps
-            repeatCount = ValueAnimator.INFINITE
+             repeatCount = ValueAnimator.INFINITE
             interpolator = LinearInterpolator()
             addUpdateListener {
                 // Move the icon by fling speed
