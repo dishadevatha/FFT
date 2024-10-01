@@ -12,20 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodForThought">
         <activity
+            android:name=".CartActivity"
+            android:exported="false" />
+        <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".vendor_list"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".vendor_login"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MenuItem"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".splash_screen"
             android:exported="true">
