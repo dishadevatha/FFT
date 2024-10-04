@@ -83,10 +83,10 @@ class MenuActivity : AppCompatActivity() {
         }
 
         viewCartButton.setOnClickListener {
-            Log.e("CartItems", ArrayList(cartItems).toString())
             val intent = Intent(this, CartActivity::class.java)
             intent.putParcelableArrayListExtra("cartItems", ArrayList(cartItems)) // Send the cart items to CartActivity
             startActivity(intent)
+            cartItems.clear()
         }
 
     }

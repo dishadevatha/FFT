@@ -30,7 +30,9 @@ class CartActivity : AppCompatActivity() {
         // Retrieve the cart items from the intent
         val cartItemsFromIntent = intent.getParcelableArrayListExtra<MenuItem>("cartItems")
         if (cartItemsFromIntent != null) {
-            CartManager.setCartItems(cartItemsFromIntent)  // Pass the items to CartManager
+            for (item in cartItemsFromIntent) {
+                CartManager.addItemToCart(item)
+            }
         }
 
         // Initialize the adapter with the updated cart items

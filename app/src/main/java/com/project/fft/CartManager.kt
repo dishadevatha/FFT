@@ -19,12 +19,13 @@ object CartManager {
     }
 
     // Set cart items (used when receiving items from another activity)
-    fun setCartItems(menuItems: List<MenuItem>) {
-        cartItems.clear()  // Clear existing items
-        for (menuItem in menuItems) {
-            cartItems.add(CartItem(menuItem))  // Add each menu item as a CartItem
-        }
-    }
+
+//    fun setCartItems(menuItems: List<MenuItem>) {
+//        //cartItems.clear()  // Clear existing items
+//        for (menuItem in menuItems) {
+//            cartItems.add(CartItem(menuItem))  // Add each menu item as a CartItem
+//        }
+//    }
 
     // Get all items in the cart
     fun getCartItems(): List<CartItem> {
