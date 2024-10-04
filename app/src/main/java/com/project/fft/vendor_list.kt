@@ -3,6 +3,7 @@ package com.project.fft
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,7 @@ class vendor_list : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private lateinit var vendorRecyclerView: RecyclerView
     private val vendors = mutableListOf<Vendor>()
+    private lateinit var viewCartButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,12 @@ class vendor_list : AppCompatActivity() {
 
         // Fetch and display vendor data
         readData()
+
+        viewCartButton=findViewById(R.id.viewCartButtonVendor)
+        viewCartButton.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun readData() {
@@ -46,6 +54,7 @@ class vendor_list : AppCompatActivity() {
                     val intent = Intent(this, MenuActivity::class.java)
 
                     intent.putExtra("menuCollection", "${vendor.name} Menu")
+                    intent.putExtra("vendorName", vendor.name)
                     startActivity(intent)
                 }
             }

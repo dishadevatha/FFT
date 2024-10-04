@@ -2,6 +2,7 @@ package com.project.fft
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,7 @@ class CartActivity : AppCompatActivity() {
 
         // Retrieve the cart items from the intent
         val cartItemsFromIntent = intent.getParcelableArrayListExtra<MenuItem>("cartItems")
+        Log.e("cartItems", "Received cart items: $cartItemsFromIntent")
         if (cartItemsFromIntent != null) {
             for (item in cartItemsFromIntent) {
                 CartManager.addItemToCart(item)

@@ -18,13 +18,15 @@ data class MenuItem(
     val itemName: String = "",
     val image: String = "",
     val description: String = "",
-    val price: Double = 0.0
+    val price: Double = 0.0,
+    var vendor: String=""
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
-        parcel.readDouble()
+        parcel.readDouble(),
+        parcel.readString().toString()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -32,6 +34,7 @@ data class MenuItem(
         parcel.writeString(image)
         parcel.writeString(description)
         parcel.writeDouble(price)
+        parcel.writeString(vendor)
     }
 
     override fun describeContents(): Int {
@@ -71,6 +74,7 @@ class MenuActivity : AppCompatActivity() {
 
         menuAdapter = MenuAdapter(menuItems) { menuItem ->
             // Handle the + button click to add to the cart
+            menuItem.vendor = intent.getStringExtra("vendorName").toString()
             Toast.makeText(this, "${menuItem.itemName} added to cart", Toast.LENGTH_SHORT).show()
             cartItems.add(menuItem)
         }
