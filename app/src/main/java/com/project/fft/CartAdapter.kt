@@ -12,16 +12,16 @@ import com.bumptech.glide.Glide
 
 class CartAdapter(
     private val cartItems: List<CartItem>,
-    private val onQuantityChange: () -> Unit
+    private val updateTotalPriceCallback: () -> Unit
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
-    inner class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val itemNameTextView: TextView = itemView.findViewById(R.id.itemName)
-        val itemPriceTextView: TextView = itemView.findViewById(R.id.itemPrice)
-        val itemQuantityTextView: TextView = itemView.findViewById(R.id.itemQuantity)
-        val itemImageView: ImageView = itemView.findViewById(R.id.itemImage)
-        val increaseButton: ImageButton = itemView.findViewById(R.id.increaseQuantity)
-        val decreaseButton: ImageButton = itemView.findViewById(R.id.decreaseQuantity)
+    class CartViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val itemNameTextView: TextView = view.findViewById(R.id.cartItemName)
+        val itemPriceTextView: TextView = view.findViewById(R.id.cartItemPrice)
+        val itemQuantityTextView: TextView = view.findViewById(R.id.cartItemQuantity)
+        val itemImageView: ImageView = view.findViewById(R.id.cartItemImage)
+        val increaseQuantityButton: ImageButton = view.findViewById(R.id.increaseQuantityButton)
+        val decreaseQuantityButton: ImageButton = view.findViewById(R.id.decreaseQuantityButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -29,35 +29,41 @@ class CartAdapter(
         return CartViewHolder(view)
     }
 
-    @SuppressLint("SetTextI18n", "DefaultLocale")
+    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val cartItem = cartItems[position]
         val menuItem = cartItem.menuItem
 
         holder.itemNameTextView.text = menuItem.itemName
-        holder.itemPriceTextView.text = "₹${String.format("%.2f", menuItem.price * cartItem.quantity)}"
+        holder.itemPriceTextView.text = "₹${menuItem.price * cartItem.quantity}"
         holder.itemQuantityTextView.text = cartItem.quantity.toString()
 
-        Glide.with(holder.itemView.context)
+        // Load the item image using Glide
+        Glide.with(holder.itemImageView.context)
             .load(menuItem.image)
             .into(holder.itemImageView)
 
-        // Increase quantity
-        holder.increaseButton.setOnClickListener {
+        // Handle increase quantity button
+        holder.increaseQuantityButton.setOnClickListener {
             CartManager.updateItemQuantity(cartItem, cartItem.quantity + 1)
             notifyItemChanged(position)
-            onQuantityChange()
+            updateTotalPriceCallback()
         }
 
-        // Decrease quantity
-        holder.decreaseButton.setOnClickListener {
+        // Handle decrease quantity button
+        holder.decreaseQuantityButton.setOnClickListener {
             if (cartItem.quantity > 1) {
                 CartManager.updateItemQuantity(cartItem, cartItem.quantity - 1)
-                notifyItemChanged(position)
-                onQuantityChange()
+            } else {
+                CartManager.updateItemQuantity(cartItem, 0) // Remove if quantity is 0
+                notifyItemRemoved(position)
             }
+            notifyDataSetChanged() // Refresh the adapter
+            updateTotalPriceCallback()
         }
     }
 
-    override fun getItemCount(): Int = cartItems.size
+    override fun getItemCount(): Int {
+        return cartItems.size
+    }
 }

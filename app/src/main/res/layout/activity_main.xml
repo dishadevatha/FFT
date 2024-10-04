@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#faf0ca">
+    android:background="@color/background">
 
     <Button
         android:id="@+id/vendor_button"
@@ -18,13 +18,14 @@
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="370dp"
-        android:backgroundTint="#0d3b66"
+        android:backgroundTint="@color/myBlue"
         android:drawableLeft="@drawable/vendor_button"
         android:fontFamily="@font/biryani_light"
         android:text="Vendor Login"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <Button
         android:id="@+id/order_button"
@@ -36,13 +37,15 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="475dp"
         android:layout_marginEnd="25dp"
-        android:backgroundTint="#0d3b66"
+        android:backgroundTint="@color/myBlue"
         android:drawableLeft="@drawable/order_button"
         android:fontFamily="@font/biryani_light"
         android:text="Order Food"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText,RtlHardcoded"
+        />
 
     <ImageView
         android:id="@+id/imageView2"

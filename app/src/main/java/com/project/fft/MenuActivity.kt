@@ -3,9 +3,11 @@ package com.project.fft
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,14 +19,42 @@ data class MenuItem(
     val image: String = "",
     val description: String = "",
     val price: Double = 0.0
-) : Parcelable
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readDouble()
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(itemName)
+        parcel.writeString(image)
+        parcel.writeString(description)
+        parcel.writeDouble(price)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<MenuItem> {
+        override fun createFromParcel(parcel: Parcel): MenuItem {
+            return MenuItem(parcel)
+        }
+
+        override fun newArray(size: Int): Array<MenuItem?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
 
 class MenuActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
     private lateinit var menuRecyclerView: RecyclerView
     private lateinit var menuAdapter: MenuAdapter
-    private lateinit var viewCartButton: Button
+    private lateinit var viewCartButton: ImageButton
     private val menuItems = mutableListOf<MenuItem>()
     private val cartItems = mutableListOf<MenuItem>()
 
@@ -53,10 +83,12 @@ class MenuActivity : AppCompatActivity() {
         }
 
         viewCartButton.setOnClickListener {
+            Log.e("CartItems", ArrayList(cartItems).toString())
             val intent = Intent(this, CartActivity::class.java)
             intent.putParcelableArrayListExtra("cartItems", ArrayList(cartItems)) // Send the cart items to CartActivity
             startActivity(intent)
         }
+
     }
 
     @SuppressLint("NotifyDataSetChanged")

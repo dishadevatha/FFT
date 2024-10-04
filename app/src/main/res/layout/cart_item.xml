@@ -8,40 +8,47 @@
     android:layout_marginBottom="15dp">
 
     <ImageView
-        android:id="@+id/itemImage"
+        android:id="@+id/cartItemImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="ContentDescription" />
 
     <TextView
+        android:id="@+id/cartItemName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/biryani_light"
+        android:paddingLeft="20dp"
         android:text="Item Name"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/increaseQuantity"
+        app:layout_constraintEnd_toStartOf="@id/increaseQuantityButton"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@id/itemImage"
+        app:layout_constraintStart_toEndOf="@id/cartItemImage"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingLeft="20dp"
-        android:textColor="@color/white"/>
+        tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
 
     <TextView
-        android:id="@+id/itemPrice"
+        android:id="@+id/cartItemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/biryani_light"
         android:text="₹0.00"
-        app:layout_constraintEnd_toStartOf="@id/increaseQuantity"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/increaseQuantityButton"
         app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toEndOf="@id/itemImage"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="49dp"
-        android:textColor="@color/white"/>
+        app:layout_constraintStart_toEndOf="@id/cartItemImage"
+        app:layout_constraintTop_toBottomOf="@+id/cartItemName"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
-        android:id="@+id/itemQuantity"
+        android:id="@+id/cartItemQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1"
@@ -51,25 +58,31 @@
         app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.508" />
+        app:layout_constraintVertical_bias="0.508"
+        android:fontFamily="@font/biryani_light"
+        tools:ignore="HardcodedText" />
 
     <ImageButton
-        android:id="@+id/increaseQuantity"
+        android:id="@+id/increaseQuantityButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/add2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="ContentDescription"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
 
     <ImageButton
-        android:id="@+id/decreaseQuantity"
+        android:id="@+id/decreaseQuantityButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="12dp"
         android:src="@drawable/minus"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/increaseQuantity"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/increaseQuantityButton"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

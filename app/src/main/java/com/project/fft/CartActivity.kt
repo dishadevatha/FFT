@@ -1,5 +1,6 @@
 package com.project.fft
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -15,6 +16,7 @@ class CartActivity : AppCompatActivity() {
     private lateinit var checkoutButton: MaterialButton
     private lateinit var cartAdapter: CartAdapter
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
@@ -24,6 +26,14 @@ class CartActivity : AppCompatActivity() {
         checkoutButton = findViewById(R.id.checkoutButton)
 
         cartRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Retrieve the cart items from the intent
+        val cartItemsFromIntent = intent.getParcelableArrayListExtra<MenuItem>("cartItems")
+        if (cartItemsFromIntent != null) {
+            CartManager.setCartItems(cartItemsFromIntent)  // Pass the items to CartManager
+        }
+
+        // Initialize the adapter with the updated cart items
         cartAdapter = CartAdapter(CartManager.getCartItems(), ::updateTotalPrice)
         cartRecyclerView.adapter = cartAdapter
 
@@ -34,13 +44,17 @@ class CartActivity : AppCompatActivity() {
                 Toast.makeText(this, "Your cart is empty!", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Proceeding to Checkout", Toast.LENGTH_SHORT).show()
+
                 CartManager.clearCart()
                 cartAdapter.notifyDataSetChanged()
+
                 updateTotalPrice()
             }
         }
     }
 
+    // Function to update the total price in the cart
+    @SuppressLint("SetTextI18n", "DefaultLocale")
     private fun updateTotalPrice() {
         val totalPrice = CartManager.getTotalPrice()
         totalPriceTextView.text = "Total: ₹${String.format("%.2f", totalPrice)}"
