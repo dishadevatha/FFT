@@ -50,6 +50,7 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
 
         // Redirect to a success page or main menu after payment
         val intent = Intent(this, PaymentSuccessActivity::class.java)
+
         startActivity(intent)
         finish()
     }

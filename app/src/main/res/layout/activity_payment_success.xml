@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,14 +11,11 @@
         android:text="Payment Successful!"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#229922"
-        android:paddingBottom="50dp"
-        tools:ignore="HardcodedText" />
+        android:textColor="#22dd22" />
 
     <Button
         android:id="@+id/continueButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continue Shopping"
-        tools:ignore="HardcodedText" />
+        android:text="Continue Shopping" />
 </LinearLayout>
