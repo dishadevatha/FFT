@@ -1,6 +1,7 @@
 package com.project.fft
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -46,13 +47,19 @@ class CartActivity : AppCompatActivity() {
         checkoutButton.setOnClickListener {
             if (CartManager.getCartItems().isEmpty()) {
                 Toast.makeText(this, "Your cart is empty!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Proceeding to Checkout", Toast.LENGTH_SHORT).show()
-
+            }
+            else {
+                // Proceed to Payment Page
+                val intent = Intent(this, PaymentActivity::class.java)
+                var totalPrice = CartManager.getTotalPrice().toInt()
+                totalPrice *= 100
+                val finalPrice = totalPrice.toString()
+                intent.putExtra("totalPrice", finalPrice) // Pass total price
                 CartManager.clearCart()
                 cartAdapter.notifyDataSetChanged()
-
                 updateTotalPrice()
+                startActivity(intent)
+                finish()
             }
         }
     }
