@@ -73,6 +73,8 @@ class vendor_login : AppCompatActivity() {
 
                     // Successful login (Navigate to the vendor's home/dashboard page)
                     Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, activeOrders::class.java)
+                    startActivity(intent)
 
                 } else {
                     Toast.makeText(this, "Incorrect name or password", Toast.LENGTH_SHORT).show()

@@ -38,7 +38,7 @@ class PaymentSuccessActivity : AppCompatActivity() {
 
 
         continueButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, vendor_list::class.java)
             startActivity(intent)
             finish()
         }

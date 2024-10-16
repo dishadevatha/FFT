@@ -1,6 +1,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -35,7 +36,8 @@
         android:text="Payment Successful!"
         android:textColor="#4bb543"
         android:textSize="28sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tokenNumberText"
@@ -52,7 +54,8 @@
         android:text="Your token number is: "
         android:textColor="#111111"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tokenNumber"
@@ -69,7 +72,8 @@
         android:text="100"
         android:textColor="#111111"
         android:textSize="48sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/continueButton"
@@ -83,9 +87,10 @@
         android:layout_marginBottom="120dp"
         android:backgroundTint="@color/myBlue"
         android:fontFamily="@font/biryani_light"
-        android:text="Home"
+        android:text="Done"
         android:textColor="@color/white"
         android:textSize="26sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>
