@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 
+@Suppress("DEPRECATION")
 class CartActivity : AppCompatActivity() {
 
     private lateinit var cartRecyclerView: RecyclerView
@@ -47,9 +48,19 @@ class CartActivity : AppCompatActivity() {
         checkoutButton.setOnClickListener {
             if (CartManager.getCartItems().isEmpty()) {
                 Toast.makeText(this, "Your cart is empty!", Toast.LENGTH_SHORT).show()
-            }
-            else {
+            } else {
                 // Proceed to Payment Page
+                val sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+
+
+                val formattedItems = formatCartItems(CartManager.getCartItems())
+                val vendor = cartItemsFromIntent?.get(0)?.vendor
+                editor.putString("items", formattedItems)
+                editor.putString("vendor", vendor.toString())
+                editor.putString("amount", CartManager.getTotalPrice().toString())
+                editor.apply()
+
                 val intent = Intent(this, PaymentActivity::class.java)
                 var totalPrice = CartManager.getTotalPrice().toInt()
                 totalPrice *= 100
@@ -64,10 +75,19 @@ class CartActivity : AppCompatActivity() {
         }
     }
 
-    // Function to update the total price in the cart
+
     @SuppressLint("SetTextI18n", "DefaultLocale")
     private fun updateTotalPrice() {
         val totalPrice = CartManager.getTotalPrice()
         totalPriceTextView.text = "Total: ₹${String.format("%.2f", totalPrice)}"
+    }
+
+
+    private fun formatCartItems(cartItems: List<CartItem>): String {
+        val formattedItems = StringBuilder()
+        for (cartItem in cartItems) {
+            formattedItems.append("${cartItem.menuItem.itemName} x${cartItem.quantity}\n")
+        }
+        return formattedItems.toString().trim() // Trim the trailing newline
     }
 }

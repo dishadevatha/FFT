@@ -63,7 +63,7 @@ dependencies {
     //noinspection GradleDependency,UseTomlInstead
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     // https://mvnrepository.com/artifact/com.razorpay/checkout
-    implementation("com.razorpay:checkout:1.6.41")
+    implementation(libs.checkout)
 
 
 }

@@ -46,7 +46,7 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener {
 
     // This function handles the payment result (success or failure)
     override fun onPaymentSuccess(razorpayPaymentID: String) {
-        Toast.makeText(this, "Payment Successful! Payment ID: $razorpayPaymentID", Toast.LENGTH_LONG).show()
+        // Toast.makeText(this, "Payment Successful! Payment ID: $razorpayPaymentID", Toast.LENGTH_LONG).show()
 
         // Redirect to a success page or main menu after payment
         val intent = Intent(this, PaymentSuccessActivity::class.java)
