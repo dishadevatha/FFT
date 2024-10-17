@@ -39,6 +39,9 @@
             android:name=".MenuItem"
             android:exported="true" />
         <activity
+            android:name=".vendor_mainscreen"
+            android:exported="true"/>
+        <activity
             android:name=".splash_screen"
             android:exported="true">
             <intent-filter>

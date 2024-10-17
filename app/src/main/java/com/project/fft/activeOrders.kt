@@ -19,13 +19,14 @@ class activeOrders : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private val activeOrders = mutableListOf<ActiveOrder>()
     private val handler = Handler(Looper.getMainLooper())
-    private var vendorName: String = "Mingos"
+    private var vendorName: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_active_orders)
 
-        // Get the vendor name from the intentvendorName = intent.getStringExtra("vendorName").toString()
+        vendorName = intent.getStringExtra("vendorName").toString()
+        Log.e("VendorName", "Vendor Name: $vendorName")
 
         ordersRecyclerView = findViewById(R.id.ordersRecyclerView)
         ordersRecyclerView.layoutManager = LinearLayoutManager(this)

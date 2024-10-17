@@ -68,12 +68,13 @@ class vendor_login : AppCompatActivity() {
 
                     // Extract vendor data (like UPI_id, image) if needed
                     val vendorName = vendor.getString("name")
-                    val vendorUPI = vendor.getString("UPI_id")
                     val vendorImage = vendor.getString("image")
 
                     // Successful login (Navigate to the vendor's home/dashboard page)
                     Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, activeOrders::class.java)
+                    val intent = Intent(this, vendor_mainscreen::class.java)
+                    intent.putExtra("vendorName", vendorName)
+                    intent.putExtra("vendorImage", vendorImage)
                     startActivity(intent)
 
                 } else {
