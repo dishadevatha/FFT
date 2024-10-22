@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodForThought">
         <activity
+            android:name=".CompletedOrders"
+            android:exported="false" />
+        <activity
             android:name=".activeOrders"
             android:exported="false" />
         <activity
@@ -40,7 +43,7 @@
             android:exported="true" />
         <activity
             android:name=".vendor_mainscreen"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".splash_screen"
             android:exported="true">

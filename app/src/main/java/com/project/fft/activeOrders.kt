@@ -27,7 +27,6 @@ class activeOrders : AppCompatActivity() {
 
         vendorName = intent.getStringExtra("vendorName").toString()
         Log.e("VendorName", "Vendor Name: $vendorName")
-
         ordersRecyclerView = findViewById(R.id.ordersRecyclerView)
         ordersRecyclerView.layoutManager = LinearLayoutManager(this)
         ordersAdapter = OrdersAdapter(activeOrders) { orderId ->
@@ -68,18 +67,42 @@ class activeOrders : AppCompatActivity() {
             }
     }
 
-    // Function to complete the order (delete it from Firestore)
+    // Function to complete the order (move it from 'Active Orders' to '{vendorName} Completed Orders')
     private fun completeOrder(orderId: String) {
-        db.collection("Active Orders").document(orderId)
-            .delete()
-            .addOnSuccessListener {
-                Toast.makeText(this, "Order Completed", Toast.LENGTH_SHORT).show()
-                fetchActiveOrders() // Refresh after deleting the order
+        val activeOrderRef = db.collection("Active Orders").document(orderId)
+
+        // Retrieve the order from 'Active Orders' before deleting it
+        activeOrderRef.get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                val completedOrder = document.toObject(ActiveOrder::class.java)
+
+                // Set the vendorName completed orders collection
+                val completedOrdersRef = db.collection("${vendorName} Completed Orders")
+
+                // Add the order to the vendor's completed orders collection
+                if (completedOrder != null) {
+                    completedOrdersRef.add(completedOrder)
+                        .addOnSuccessListener {
+                            // Once added to completed orders, delete from active orders
+                            activeOrderRef.delete()
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "Order Completed", Toast.LENGTH_SHORT).show()
+                                    fetchActiveOrders() // Refresh after deleting the order
+                                }
+                                .addOnFailureListener { exception ->
+                                    Log.e("activeOrders", "Error deleting order", exception)
+                                    Toast.makeText(this, "Failed to complete the order", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.e("activeOrders", "Error adding order to completed orders", exception)
+                            Toast.makeText(this, "Failed to move the order to completed", Toast.LENGTH_SHORT).show()
+                        }
+                }
             }
-            .addOnFailureListener { exception ->
-                Log.e("activeOrders", "Error deleting order", exception)
-                Toast.makeText(this, "Failed to complete the order", Toast.LENGTH_SHORT).show()
-            }
+        }.addOnFailureListener { exception ->
+            Log.e("activeOrders", "Error retrieving order", exception)
+        }
     }
 
     override fun onDestroy() {

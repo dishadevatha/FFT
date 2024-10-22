@@ -53,8 +53,8 @@ class vendor_mainscreen : AppCompatActivity() {
         }
 
         completedOrdersButton.setOnClickListener {
-//            val intent = Intent(this, CompletedOrdersActivity::class.java)
-//            intent.putExtra("vendorName", vendorName)  // Pass the vendor name
+//            val intent = Intent(this, completedOrders::class.java)
+//            Log.e("Completed_VendorName1", "Vendor Name: $vendorName")
 //            startActivity(intent)
         }
 

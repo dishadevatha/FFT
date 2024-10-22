@@ -69,6 +69,8 @@ class vendor_login : AppCompatActivity() {
                     // Extract vendor data (like UPI_id, image) if needed
                     val vendorName = vendor.getString("name")
                     val vendorImage = vendor.getString("image")
+                    val sp = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+                    sp.edit().putString("vendorName", vendorName).apply()
 
                     // Successful login (Navigate to the vendor's home/dashboard page)
                     Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()

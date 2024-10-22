@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_corners"
+    android:padding="10dp"
+    android:layout_marginBottom="15dp">
+
+    <TextView
+        android:id="@+id/orderDetailsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Details"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@color/wallet_bright_foreground_holo_dark"/>
+
+    <Button
+        android:id="@+id/completeOrderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/black"
+        android:padding="10dp"
+        android:text="Delete"
+        android:textColor="@android:color/white"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/orderAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="Token Number"
+        android:textColor="@color/myYellow"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/AmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="Amount"
+        android:textColor="#45e985"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText"
+        android:layout_gravity=""/>
+
+</LinearLayout>
