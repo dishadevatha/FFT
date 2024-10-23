@@ -53,9 +53,8 @@ class vendor_mainscreen : AppCompatActivity() {
         }
 
         completedOrdersButton.setOnClickListener {
-//            val intent = Intent(this, completedOrders::class.java)
-//            Log.e("Completed_VendorName1", "Vendor Name: $vendorName")
-//            startActivity(intent)
+            val intent = Intent(this, completedOrders::class.java)
+            startActivity(intent)
         }
 
         changeMenuButton.setOnClickListener {
