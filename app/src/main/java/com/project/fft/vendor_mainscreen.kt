@@ -58,9 +58,8 @@ class vendor_mainscreen : AppCompatActivity() {
         }
 
         changeMenuButton.setOnClickListener {
-//            val intent = Intent(this, ChangeMenuActivity::class.java)
-//            intent.putExtra("vendorName", vendorName)  // Pass the vendor name
-//            startActivity(intent)
+            val intent = Intent(this, VendorMenuActivity::class.java)
+            startActivity(intent)
         }
     }
 

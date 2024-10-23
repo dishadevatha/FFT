@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -56,7 +55,7 @@ class MenuActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
     private lateinit var menuRecyclerView: RecyclerView
-    private lateinit var menuAdapter: MenuAdapter
+    private lateinit var vendorMenuAdapter: MenuAdapter
     private lateinit var viewCartButton: ImageButton
     private val menuItems = mutableListOf<MenuItem>()
     private val cartItems = mutableListOf<MenuItem>()
@@ -72,14 +71,14 @@ class MenuActivity : AppCompatActivity() {
         viewCartButton = findViewById(R.id.viewCartButton)
         menuRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        menuAdapter = MenuAdapter(menuItems) { menuItem ->
+        vendorMenuAdapter = MenuAdapter(menuItems) { menuItem ->
             // Handle the + button click to add to the cart
             menuItem.vendor = intent.getStringExtra("vendorName").toString()
             Toast.makeText(this, "${menuItem.itemName} added to cart", Toast.LENGTH_SHORT).show()
             cartItems.add(menuItem)
         }
 
-        menuRecyclerView.adapter = menuAdapter
+        menuRecyclerView.adapter = vendorMenuAdapter
 
 
         if (menuCollection != null) {
@@ -105,7 +104,7 @@ class MenuActivity : AppCompatActivity() {
                     menuItems.add(item)
                 }
 
-                menuAdapter.notifyDataSetChanged()
+                vendorMenuAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
                 Log.e("MenuActivity", "Error fetching menu items", exception)

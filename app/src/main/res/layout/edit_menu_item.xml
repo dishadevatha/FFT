@@ -1,0 +1,70 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@drawable/rounded_corners"
+    android:layout_marginBottom="15dp">
+
+    <ImageView
+        android:id="@+id/menu_item_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="ContentDescription"/>
+
+    <TextView
+        android:id="@+id/menu_item_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/menu_item_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/menu_remove_item_button"
+        android:text="Menu Item"
+        tools:ignore="HardcodedText,RtlSymmetry"
+        android:textColor="@color/white"
+        android:paddingLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/menu_item_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:maxLines="2"
+        app:layout_constraintStart_toEndOf="@id/menu_item_image"
+        app:layout_constraintTop_toBottomOf="@id/menu_item_name"
+        app:layout_constraintEnd_toStartOf="@id/menu_remove_item_button"
+        android:text="Menu Item Description"
+        tools:ignore="HardcodedText"
+        android:textColor="@color/white"
+        android:paddingLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/menu_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/menu_item_name"
+        app:layout_constraintTop_toBottomOf="@id/menu_item_description"
+        android:text="₹0.00"
+        tools:ignore="HardcodedText"
+        android:textColor="#00AD00"
+        android:paddingLeft="15dp"/>
+
+    <ImageView
+        android:id="@+id/menu_remove_item_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        app:srcCompat="@drawable/minus2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingRight="5dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

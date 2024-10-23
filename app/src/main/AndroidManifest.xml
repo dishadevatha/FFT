@@ -45,6 +45,12 @@
             android:name=".completedOrders"
             android:exported="true" />
         <activity
+            android:name=".VendorMenuActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AddMenuItemActivity"
+            android:exported="true" />
+        <activity
             android:name=".splash_screen"
             android:exported="true">
             <intent-filter>

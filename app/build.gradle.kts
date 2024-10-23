@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.firebase.storage.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -64,6 +65,8 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     // https://mvnrepository.com/artifact/com.razorpay/checkout
     implementation(libs.checkout)
+    //noinspection UseTomlInstead
+    implementation("com.squareup.picasso:picasso:2.71828")
 
 
 }
