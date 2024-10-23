@@ -10,11 +10,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.*
+
 
 class AddMenuItemActivity : AppCompatActivity() {
 
@@ -31,6 +33,7 @@ class AddMenuItemActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_add_menu_item)
 
         itemNameInput = findViewById(R.id.item_name_input)
@@ -73,10 +76,19 @@ class AddMenuItemActivity : AppCompatActivity() {
         val description = descriptionInput.text.toString()
         val price = priceInput.text.toString().toInt()
 
-        val imageRef = storageReference.child("menu_images/${itemName}.jpg")
-        imageRef.putFile(selectedImageUri).addOnSuccessListener {
-            imageRef.downloadUrl.addOnSuccessListener { uri ->
+        Log.e("AddMenuItemActivity_", "Item Name: $itemName")
+        Log.e("AddMenuItemActivity_", "Description: $description")
+        Log.e("AddMenuItemActivity_", "Price: $price")
+        Log.e("AddMenuItemActivity_", "Selected Image URI: $selectedImageUri")
+        Log.e("AddMenuItemActivity_", "Vendor Name: $vendorName")
+
+
+        val imageRef = storageReference.child("${selectedImageUri.lastPathSegment}")
+        Log.e("AddMenuItemActivity_", "Image Ref: $imageRef")
+        imageRef.putFile(selectedImageUri).addOnSuccessListener { taskSnapshot  ->
+            taskSnapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener { uri ->
                 val menuItem = VendorMenuItem(itemName, description, price, uri.toString())
+                Log.e("AddMenuItemActivity_", "Menu Item $menuItem")
                 firestore.collection("${vendorName} Menu")
                     .add(menuItem)
                     .addOnSuccessListener {
@@ -87,6 +99,9 @@ class AddMenuItemActivity : AppCompatActivity() {
                         Toast.makeText(this, "Failed to add item: ${e.message}", Toast.LENGTH_SHORT).show()
                     }
             }
+        }.addOnFailureListener { e ->
+            Toast.makeText(this, "Failed to upload image: ${e.message}", Toast.LENGTH_SHORT).show()
+            Log.e("AddMenuItemActivity_", "Failed to upload image: ${e.message}")
         }
     }
 
